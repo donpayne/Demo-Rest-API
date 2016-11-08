@@ -2,17 +2,18 @@
 // Modules
 // **********************************************************************************
 var	path    = require('path');
+var tc      = require('tc');
 var root    = process.env.DEMO_HOME || path.resolve('.');
 var _       = require('lodash');
 
 // Env Variables
 // **********************************************************************************
-process.env.PORT     = process.env.PORT || 3000;
+process.env.PORT     = process.env.PORT || 3155;
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
 // Config Object
 // **********************************************************************************
-var config = module.exports =
+var config =
 {
 	path:
 	{
@@ -30,8 +31,7 @@ var config = module.exports =
 			models        : path.join(root, 'app', 'models'),
 			routes        : path.join(root, 'app', 'routes')
 		}
-	},
-	setProperties: setProperties
+	}
 };
 
 config.setProperties = function (options)
@@ -40,3 +40,5 @@ config.setProperties = function (options)
 
 	return _.assign(this, options);
 };
+
+module.exports = tc.getNconfig('StabilityMonitorService');
